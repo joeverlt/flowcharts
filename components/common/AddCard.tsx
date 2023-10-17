@@ -33,7 +33,7 @@ export const AddCard = ({ block, title, onAdd, loading }: AddCardProps) => {
     <div
       className={`${
         block ? 'h-20' : ''
-      } p-4 border-2 border-dashed border-stone-300 rounded-lg flex flex-col items-center justify-center gap-3 w-full ${
+      } p-4 border-2 border-dashed border-stone-300 rounded-lg flex flex-col items-center justify-center gap-3 w-full relative overflow-hidden ${
         adding ? 'cursor-pointer' : ''
       }`}
       onClick={() => {
