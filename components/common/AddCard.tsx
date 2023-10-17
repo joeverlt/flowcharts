@@ -23,6 +23,12 @@ export const AddCard = ({ block, title, onAdd, loading }: AddCardProps) => {
     reset()
   }
 
+  const onSave = async (data: any) => {
+    await onAdd(data)
+    setAdding(false)
+    reset()
+  }
+
   return (
     <div
       className={`${
@@ -48,7 +54,7 @@ export const AddCard = ({ block, title, onAdd, loading }: AddCardProps) => {
             severity="success"
             size={32}
             icon={FaCheckCircle}
-            onClick={handleSubmit(onAdd)}
+            onClick={handleSubmit(onSave)}
           />
           <IconButton
             size={32}

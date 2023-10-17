@@ -5,9 +5,11 @@ import { MarkerType } from 'reactflow'
 
 export const Sidebar = ({ onSelect }: { onSelect: (data: any) => any }) => {
   const [selected, setSelected] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
   const [workflows, setWorkflows] = useState<any[]>([])
 
   const onAddWorkflow = async (data: any) => {
+    setLoading(true)
     try {
       await fetch('/api/v1/workflows', {
         method: 'POST',
@@ -20,6 +22,7 @@ export const Sidebar = ({ onSelect }: { onSelect: (data: any) => any }) => {
     } catch (e: any) {
       console.error(e)
     }
+    setLoading(false)
   }
 
   const getWorkflows = async () => {
@@ -67,7 +70,7 @@ export const Sidebar = ({ onSelect }: { onSelect: (data: any) => any }) => {
         <AddCard
           block
           title="Add workflow"
-          loading={false}
+          loading={loading}
           onAdd={onAddWorkflow}
         />
         {workflows &&
